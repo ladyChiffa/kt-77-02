@@ -3,12 +3,17 @@ import org.junit.Test
 import service.WallService
 
 import org.junit.Assert.*
+import org.junit.Before
 
 class WallServiceKtTest {
+    @Before
+    fun clearBeforeTest() {
+        WallService.clear()
+    }
+
     @Test
     fun add() {
         // Arrange
-        WallService.clear()
         val post = Post(0, 0, 0, 0, "Happy birthday", null)
 
         // Act
@@ -21,8 +26,9 @@ class WallServiceKtTest {
     @Test
     fun updateFailed() {
         // Arrange
-        WallService.clear()
         val post = Post(100, 0, 0, 0, "Happy birthday", null)
+        WallService.add(post)
+        WallService.add(post)
 
         // Act
         val result = WallService.update(post)
@@ -34,7 +40,6 @@ class WallServiceKtTest {
     @Test
     fun updateSuccess() {
         // Arrange
-        WallService.clear()
         val post = Post(0, 0, 0, 0, "Happy birthday", null)
         WallService.add(post);
         val postNew = Post(1, 1, 1, 0, "Happy birthday!!!", null)
