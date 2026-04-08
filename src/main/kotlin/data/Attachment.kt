@@ -2,13 +2,13 @@ package data
 
 //=======================================================================
 // Media classes
-class PhotoLink (
+data class PhotoLink (
     val type: String,
     val url: String,
     val width: Int,
     val height: Int
 )
-class Photo (
+data class Photo (
     val id: Int,
     val ownerId: Int,
     val text: String = "",
@@ -16,7 +16,7 @@ class Photo (
     val sizes: Array<PhotoLink> = emptyArray()
 )
 
-class Audio (
+data class Audio (
     val id: Int,
     val ownerId: Int,
     val title: String,
@@ -25,7 +25,7 @@ class Audio (
     val albumId: Int? = null
 )
 
-class Video (
+data class Video (
     val id: Int,
     val ownerId: Int,
     val title: String,
@@ -35,7 +35,7 @@ class Video (
     val albumId: Int? = null
 )
 
-class File (
+data class File (
     val id: Int,
     val ownerId: Int,
     val title: String,
@@ -43,39 +43,39 @@ class File (
     val size: Int
 )
 
-class Coordinates (
+data class Coordinates (
     val longitude: Int,
     val latitude: Int
 )
-class Geotag (
+data class Geotag (
     val type: String,
     val coordinates: Coordinates
 )
 
-
 //=======================================================================
 // Attachment classes
 abstract class Attachment (
-    val type: String
+    open val type: String
 )
 
-class PhotoAttachment (
-    type: String,
+data class PhotoAttachment (
+    override val type: String,
     val photo: Photo
-)
-class AudioAttachment (
-    type: String,
+) : Attachment(type)
+
+data class AudioAttachment (
+    override val type: String,
     val audio: Audio
-)
-class VideoAttachment (
-    type: String,
+) : Attachment(type)
+data class VideoAttachment (
+    override val type: String,
     val video: Video
-)
-class FileAttachment (
-    type: String,
+) : Attachment(type)
+data class FileAttachment (
+    override val type: String,
     val file: File
-)
-class GeoAttachment (
-    type: String,
+) : Attachment(type)
+data class GeoAttachment (
+    override val type: String,
     val geotag: Geotag
-)
+) : Attachment(type)
