@@ -11,5 +11,6 @@ data class Post (
     val isFavourite: Boolean = false,
     val markedAsAds: Boolean = false,
     val likes: Likes = Likes(),
-    val views: Views = Views()
+    val views: Views = Views(),
+    var attachments: Array<Attachment> = emptyArray()
 )
