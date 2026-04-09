@@ -17,8 +17,10 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    // useJUnitPlatform()
+    useJUnit()
 }
+
 kotlin {
     jvmToolchain(17)
 }
