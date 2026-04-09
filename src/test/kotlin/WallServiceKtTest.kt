@@ -1,6 +1,8 @@
+import data.Comment
 import data.Post
 import org.junit.Test
 import service.WallService
+import exception.PostNotFoundException
 
 import org.junit.Assert.*
 import org.junit.Before
@@ -49,5 +51,30 @@ class WallServiceKtTest {
 
         // Assert
         assertEquals(true, result)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrow() {
+        // Arrange
+        val post = Post(0, 0, 0, 0, "Happy birthday", null)
+        WallService.add(post);
+        val comment = Comment(0, 0, "Thanks!", 0)
+
+        // Act
+        WallService.createComment(100, comment)
+    }
+
+    @Test
+    fun shouldNotThrow() {
+        // Arrange
+        val post = Post(0, 0, 0, 0, "Happy birthday", null)
+        WallService.add(post);
+        val comment = Comment(0, 0, "Thanks!", 0)
+
+        // Act
+        val result = WallService.createComment(1, comment)
+
+        // Assert
+        assertEquals(1, result.id)
     }
 }
