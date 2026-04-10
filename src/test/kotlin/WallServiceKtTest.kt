@@ -14,7 +14,7 @@ class WallServiceKtTest {
     @Test
     fun add() {
         // Arrange
-        val post = Post(0, 0, 0, 0, "Happy birthday", null)
+        val post = Post(0, 0, 0, 0, "Happy birthday", null, null)
 
         // Act
         val result = WallService.add(post)
@@ -26,7 +26,7 @@ class WallServiceKtTest {
     @Test
     fun updateFailed() {
         // Arrange
-        val post = Post(100, 0, 0, 0, "Happy birthday", null)
+        val post = Post(100, 0, 0, 0, "Happy birthday", null, null)
         WallService.add(post)
         WallService.add(post)
 
@@ -40,9 +40,9 @@ class WallServiceKtTest {
     @Test
     fun updateSuccess() {
         // Arrange
-        val post = Post(0, 0, 0, 0, "Happy birthday", null)
+        val post = Post(0, 0, 0, 0, "Happy birthday", null, null)
         WallService.add(post);
-        val postNew = Post(1, 1, 1, 0, "Happy birthday!!!", null)
+        val postNew = Post(1, 1, 1, 0, "Happy birthday!!!", null, null)
 
         // Act
         val result = WallService.update(postNew)
