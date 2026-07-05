@@ -56,7 +56,7 @@ class WallServiceKtTest {
     @Test(expected = PostNotFoundException::class)
     fun shouldThrow() {
         // Arrange
-        val post = Post(0, 0, 0, 0, "Happy birthday", null)
+        val post = Post(0, 0, 0, 0, "Happy birthday", null, null)
         WallService.add(post);
         val comment = Comment(0, 0, "Thanks!", 0)
 
@@ -67,7 +67,7 @@ class WallServiceKtTest {
     @Test
     fun shouldNotThrow() {
         // Arrange
-        val post = Post(0, 0, 0, 0, "Happy birthday", null)
+        val post = Post(0, 0, 0, 0, "Happy birthday", null, null)
         WallService.add(post);
         val comment = Comment(0, 0, "Thanks!", 0)
 
